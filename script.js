@@ -16,10 +16,13 @@ function populateTable(students) {
         <td>${student.marks}</td>
         <td>${passingStatus}</td>
         <td>${student.email}</td>
+        <td>${student.city}</td>
       `;
     tableBody.appendChild(row);
   });
 }
+
+
 
 // Function to filter data based on search query
 function search() {
@@ -74,14 +77,15 @@ function sortByClass() {
 
 // Function to sort students by gender and display them in separate tables
 function sortByGender() {
-  const maleStudents = students.filter((student) => student.gender === "Male");
-  const femaleStudents = students.filter(
-    (student) => student.gender === "Female"
-  );
+//   const maleStudents = students.filter((student) => student.gender === "Male");
+//   const femaleStudents = students.filter(
+//     (student) => student.gender === "Female"
+//   );
 
-  const sortedStudents = maleStudents.concat(femaleStudents);
-  //populateTable(maleStudents, "maleTable");
-  // populateTable(femaleStudents, "femaleTable");
+//   const sortedStudents = maleStudents.concat(femaleStudents);
+//   //populateTable(maleStudents, "maleTable");
+//   // populateTable(femaleStudents, "femaleTable");
+const sortedStudents = students.sort((a, b) => a.gender.localeCompare(b.gender));
   populateTable(sortedStudents);
 }
 
@@ -1320,3 +1324,6 @@ let students = [
     city: "Makin Village",
   },
 ];
+
+document.addEventListener("DOMContentLoaded",populateTable(students));
+
